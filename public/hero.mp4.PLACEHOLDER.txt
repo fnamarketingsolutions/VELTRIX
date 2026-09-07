@@ -1,0 +1,1 @@
+Drop your hero video here as public/hero.mp4 (replace this file).

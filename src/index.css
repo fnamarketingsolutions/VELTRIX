@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@theme {
+  --color-studio: #c8c8c8;
+  --color-studio-deep: #9a9a9a;
+  --color-ink: #0a0a0a;
+  --color-frost: rgba(28, 28, 30, 0.42);
+  --color-frost-strong: rgba(22, 22, 24, 0.55);
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply m-0 min-h-full w-full;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  body {
+    @apply font-sans text-white bg-studio antialiased overflow-x-hidden;
+  }
+
+  #root {
+    @apply max-w-none text-left border-none block;
+  }
+}
+
+@keyframes born-marquee {
+  0% {
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
+  100% {
+    left: 100%;
+    transform: translate(0, -50%);
+  }
+}
+
+.born-marquee {
+  animation: born-marquee 8s linear infinite;
+}
+
+@keyframes footer-marquee {
+  0% {
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
+  100% {
+    left: 100%;
+    transform: translate(0, -50%);
+  }
+}
+
+.footer-marquee {
+  animation: footer-marquee 10s linear infinite;
+}
+
+@keyframes speed-marquee {
+  0% {
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
+  100% {
+    left: 100%;
+    transform: translate(0, -50%);
+  }
+}
+
+.speed-marquee {
+  animation: speed-marquee 8s linear infinite;
+}
