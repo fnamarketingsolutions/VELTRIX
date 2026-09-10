@@ -2,6 +2,7 @@ import footerBackgroundVideo from '../assets/footerAsseets/footer-bg.mp4'
 
 
 const cell = 'min-h-0 overflow-hidden border border-white/10 bg-transparent'
+const spacer = `${cell} max-md:hidden`
 
 const navLinks = [
   { label: 'Main', href: '#hero' },
@@ -55,7 +56,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer
-      className="relative h-svh w-full overflow-hidden bg-[#1a1a1a]"
+      className="relative h-auto md:h-svh w-full overflow-hidden bg-[#1a1a1a]"
       id="footer"
     >
       {/* Background Video Placeholder */}
@@ -71,7 +72,7 @@ export default function Footer() {
       {/* Dark overlay to ensure crisp contrast over bright videos */}
       <div className="absolute inset-0 z-[1] bg-black/40 pointer-events-none" />
 
-      <div className="relative z-[2] grid h-full grid-cols-4 grid-rows-[repeat(2,minmax(0,1fr))]">
+      <div className="relative z-[2] grid h-auto md:h-full grid-cols-1 md:grid-cols-4 auto-rows-[minmax(auto,auto)] md:auto-rows-auto md:grid-rows-[repeat(2,minmax(0,1fr))]">
         {/* Row 1 col 1 — nav */}
         <nav
           className={`${cell} flex flex-col justify-start gap-[clamp(0.35rem,0.8vw,0.65rem)] p-[clamp(1rem,2.2vw,1.75rem)]`}
@@ -81,7 +82,7 @@ export default function Footer() {
             <a
               key={label}
               href={href}
-              className="font-serif text-[clamp(1.1rem,2vw,1.65rem)] font-medium leading-none text-white no-underline transition-opacity hover:opacity-70"
+              className="font-serif text-[clamp(1.25rem,2vw,1.65rem)] font-medium leading-none text-white no-underline transition-opacity hover:opacity-70"
             >
               {label}
             </a>
@@ -89,43 +90,43 @@ export default function Footer() {
         </nav>
 
         {/* Row 1 cols 2–3 — empty */}
-        <div className={cell} aria-hidden="true" />
-        <div className={cell} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
 
         {/* Row 1 col 4 — contacts */}
         <div
           className={`${cell} flex flex-col justify-start gap-[clamp(0.65rem,1.2vw,1rem)] p-[clamp(1rem,2.2vw,1.75rem)] text-white`}
         >
-          <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-2.5 py-0.5 text-[clamp(0.55rem,0.75vw,0.7rem)] font-semibold tracking-[0.12em]">
+          <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-2.5 py-0.5 text-[clamp(0.65rem,0.75vw,0.7rem)] font-semibold tracking-[0.12em]">
             .CONTACTS
           </span>
-          <p className="m-0 text-[clamp(0.55rem,0.8vw,0.72rem)] font-semibold uppercase leading-[1.55] tracking-[0.08em] opacity-90">
-            Porscheplatz 1, 70435 Stuttgart,
+          <p className="m-0 text-[0.7rem] md:text-[clamp(0.55rem,0.8vw,0.72rem)] font-semibold uppercase leading-[1.55] tracking-[0.08em] opacity-90">
+            1 Veltrix Drive, London,
             <br />
-            Germany
+            United Kingdom
           </p>
-          <div className="flex flex-col gap-1 text-[clamp(0.55rem,0.8vw,0.72rem)] font-semibold uppercase leading-[1.45] tracking-[0.08em] opacity-90">
-            <a href="mailto:enquiries@porsche.com" className="text-white no-underline hover:opacity-70">
-              enquiries@porsche.com
+          <div className="flex flex-col gap-1 text-[0.7rem] md:text-[clamp(0.55rem,0.8vw,0.72rem)] font-semibold uppercase leading-[1.45] tracking-[0.08em] opacity-90">
+            <a href="mailto:enquiries@veltrix.com" className="text-white no-underline hover:opacity-70">
+              enquiries@veltrix.com
             </a>
-            <a href="mailto:press@porsche.com" className="text-white no-underline hover:opacity-70">
-              press@porsche.com
+            <a href="mailto:press@veltrix.com" className="text-white no-underline hover:opacity-70">
+              press@veltrix.com
             </a>
           </div>
-          <p className="m-0 text-[clamp(0.5rem,0.7vw,0.65rem)] font-semibold uppercase leading-[1.45] tracking-[0.08em] opacity-70">
-            Dr. Ing. h.c. F. Porsche AG — Placeholder company number
+          <p className="m-0 text-[0.65rem] md:text-[clamp(0.5rem,0.7vw,0.65rem)] font-semibold uppercase leading-[1.45] tracking-[0.08em] opacity-70">
+            Veltrix Motors Ltd — Placeholder company number
           </p>
         </div>
 
         {/* Row 2 cols 1–2 — marquee */}
-        <div className={`${cell} relative col-span-2 min-h-0 overflow-hidden`}>
-          <span className="footer-marquee absolute top-1/2 whitespace-nowrap font-display text-[clamp(4rem,14vw,11rem)] uppercase leading-none tracking-tight text-white">
-            PORSCHE
+        <div className={`${cell} relative col-span-1 md:col-span-2 min-h-[28svh] md:min-h-0 overflow-hidden`}>
+          <span className="footer-marquee absolute top-1/2 whitespace-nowrap font-display text-[clamp(3.5rem,18vw,11rem)] md:text-[clamp(4rem,14vw,11rem)] uppercase leading-none tracking-tight text-white">
+            VELTRIX
           </span>
         </div>
 
         {/* Row 2 col 3 — empty */}
-        <div className={cell} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
 
         {/* Row 2 col 4 — socials */}
         <div className={`${cell} relative flex items-end justify-end p-[clamp(1rem,2.2vw,1.75rem)]`}>
@@ -135,7 +136,7 @@ export default function Footer() {
                 <a
                   href={href}
                   aria-label={label}
-                  className="flex h-[clamp(2rem,3.2vw,2.75rem)] w-[clamp(2rem,3.2vw,2.75rem)] items-center justify-center rounded-full bg-white/15 text-white no-underline transition-colors hover:bg-white/25"
+                  className="flex h-[clamp(2.25rem,3.2vw,2.75rem)] w-[clamp(2.25rem,3.2vw,2.75rem)] items-center justify-center rounded-full bg-white/15 text-white no-underline transition-colors hover:bg-white/25"
                 >
                   {icon}
                 </a>

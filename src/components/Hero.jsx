@@ -54,7 +54,7 @@ export default function Hero() {
         ref={titleRef}
         className="absolute z-[2] left-1/2 bottom-[12%] m-0 font-display text-[clamp(5.5rem,18vw,14rem)] leading-[0.85] tracking-[-0.02em] text-white uppercase w-max max-w-[92vw] [text-shadow:0_2px_40px_rgba(0,0,0,0.25)] pointer-events-none will-change-[transform,opacity] max-[900px]:bottom-[38%] max-[900px]:text-[clamp(4.5rem,22vw,8rem)]"
       >
-        PORSCHE
+        VELTRIX
       </h1>
 
       <aside
@@ -62,7 +62,7 @@ export default function Hero() {
         className="absolute z-[3] right-[4vw] bottom-14 w-[min(340px,calc(100%-2rem))] py-6 px-[1.35rem] pb-[1.6rem] bg-frost backdrop-blur-[22px] border border-white/10 text-white max-[900px]:right-5 max-[900px]:left-5 max-[900px]:bottom-6 max-[900px]:w-auto"
       >
         <p className="flex gap-[0.85rem] m-0 mb-4 text-[0.62rem] tracking-[0.18em] opacity-70">
-          <span>.PORSCHE</span>
+          <span>.VELTRIX</span>
           <span>.911</span>
         </p>
         <h2 className="m-0 mb-[1.1rem] font-serif text-[clamp(1.45rem,2.2vw,1.85rem)] font-medium leading-[1.2] tracking-[0.01em]">

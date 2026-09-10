@@ -24,7 +24,19 @@ export default function LightnessVideo() {
 
     tryPlay()
 
-    const ctx = gsap.context(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+
+    const applyAnim = () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === section) st.kill()
+      })
+      gsap.killTweensOf(frame)
+
+      if (mq.matches) {
+        gsap.set(frame, { width: '100%' })
+        return
+      }
+
       gsap.fromTo(
         frame,
         { width: '50%' },
@@ -43,9 +55,18 @@ export default function LightnessVideo() {
           },
         },
       )
+    }
+
+    const ctx = gsap.context(() => {
+      applyAnim()
     }, section)
 
-    return () => ctx.revert()
+    mq.addEventListener('change', applyAnim)
+
+    return () => {
+      mq.removeEventListener('change', applyAnim)
+      ctx.revert()
+    }
   }, [])
 
   return (
@@ -54,10 +75,10 @@ export default function LightnessVideo() {
       className="relative h-svh w-full overflow-hidden bg-black"
       id="lightness-video"
     >
-      {/* 4-col alignment: black sides implied; video starts as middle two cols */}
+      {/* 4-col alignment on desktop; full-bleed on mobile */}
       <div
         ref={frameRef}
-        className="absolute top-0 left-1/2 z-[2] h-full w-1/2 -translate-x-1/2 overflow-hidden"
+        className="absolute top-0 left-1/2 z-[2] h-full w-full md:w-1/2 -translate-x-1/2 overflow-hidden"
       >
         <video
           ref={videoRef}

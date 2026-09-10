@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 
-export const GRID_COLS = 4
+export const GRID_COLS_DESKTOP = 4
+export const GRID_COLS_MOBILE = 2
 export const GRID_ROWS = 2
 const DOT = 12
+const MOBILE_MQ = '(max-width: 767px)'
 
 /** Measure one grid row in px (50svh) so overlay matches section heights. */
 function measureCellHeight() {
@@ -17,19 +19,28 @@ function measureCellHeight() {
 /**
  * Full-page absolute grid. Horizontal lines sit at fixed 50svh intervals
  * from the top so they align with section boundaries (not stretched %).
+ * Uses 2 columns below md (768px) to match mobile section grids.
  */
 export default function GridOverlay() {
-  const [metrics, setMetrics] = useState({ rowCount: GRID_ROWS, cellH: 0, pageH: 0 })
+  const [metrics, setMetrics] = useState({
+    cols: GRID_COLS_DESKTOP,
+    rowCount: GRID_ROWS,
+    cellH: 0,
+    pageH: 0,
+  })
 
   useEffect(() => {
     const page = document.querySelector('.page')
     if (!page) return
 
+    const mq = window.matchMedia(MOBILE_MQ)
+
     const measure = () => {
       const cellH = measureCellHeight()
       const pageH = page.offsetHeight
+      const cols = mq.matches ? GRID_COLS_MOBILE : GRID_COLS_DESKTOP
       const rowCount = Math.max(GRID_ROWS, Math.ceil(pageH / cellH))
-      setMetrics({ rowCount, cellH, pageH })
+      setMetrics({ cols, rowCount, cellH, pageH })
     }
 
     measure()
@@ -37,23 +48,25 @@ export default function GridOverlay() {
     const ro = new ResizeObserver(measure)
     ro.observe(page)
     window.addEventListener('resize', measure)
+    mq.addEventListener('change', measure)
 
     return () => {
       ro.disconnect()
       window.removeEventListener('resize', measure)
+      mq.removeEventListener('change', measure)
     }
   }, [])
 
   const { lines, dots } = useMemo(() => {
-    const { rowCount, cellH, pageH } = metrics
+    const { cols, rowCount, cellH, pageH } = metrics
     if (!cellH || !pageH) return { lines: [], dots: [] }
 
     const vertical = []
     const horizontal = []
     const intersections = []
 
-    for (let i = 0; i <= GRID_COLS; i++) {
-      const x = (i / GRID_COLS) * 100
+    for (let i = 0; i <= cols; i++) {
+      const x = (i / cols) * 100
       vertical.push(
         <line
           key={`v-${i}`}
@@ -84,9 +97,9 @@ export default function GridOverlay() {
       )
     }
 
-    for (let i = 0; i <= GRID_COLS; i++) {
+    for (let i = 0; i <= cols; i++) {
       for (let j = 0; j <= rowCount; j++) {
-        const x = (i / GRID_COLS) * 100
+        const x = (i / cols) * 100
         const y = Math.min(j * cellH, pageH)
         intersections.push(
           <rect

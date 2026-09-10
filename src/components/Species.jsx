@@ -1,12 +1,13 @@
 import speciesBg from '../assets/secondSection/porsche3.jpg'
 
 const blockBg = 'min-h-0 overflow-hidden border border-white/10 bg-[#888C8F]'
-const displayCell = `${blockBg} flex items-center justify-center font-display text-white uppercase leading-none tracking-tight text-[clamp(3.5rem,12vw,9rem)]`
+const displayCell = `${blockBg} flex items-center justify-center font-display text-white uppercase leading-none tracking-tight text-[clamp(2.75rem,14vw,9rem)] md:text-[clamp(3.5rem,12vw,9rem)]`
+const spacer = `${blockBg} max-md:hidden`
 
 export default function Species() {
   return (
     <section
-      className="relative h-[150svh] w-full overflow-hidden bg-[#888C8F]"
+      className="relative h-auto md:h-[150svh] w-full overflow-hidden bg-[#888C8F]"
       id="species"
     >
       <img
@@ -16,48 +17,48 @@ export default function Species() {
         className="absolute inset-0 z-[1] h-full w-full object-cover"
       />
 
-      <div className="relative z-[2] grid h-full grid-cols-4 grid-rows-[repeat(3,minmax(0,1fr))]">
+      <div className="relative z-[2] grid h-auto md:h-full grid-cols-2 md:grid-cols-4 auto-rows-[minmax(28svh,auto)] md:auto-rows-auto md:grid-rows-[repeat(3,minmax(0,1fr))]">
         {/* Row 1 */}
         <div className={displayCell}>A</div>
         <div className={displayCell}>NEW</div>
-        <div className={blockBg} aria-hidden="true" />
-        <div className={displayCell}>SPECIES</div>
+        <div className={spacer} aria-hidden="true" />
+        <div className={`${displayCell} max-md:col-span-2`}>SPECIES</div>
 
         {/* Row 2 */}
         <div
-          className={`${blockBg} flex flex-col justify-start gap-[clamp(0.75rem,1.5vw,1.25rem)] p-[clamp(1rem,2.2vw,1.75rem)] text-white`}
+          className={`${blockBg} flex flex-col justify-start gap-[clamp(0.75rem,1.5vw,1.25rem)] p-[clamp(1rem,2.2vw,1.75rem)] text-white max-md:col-span-2 max-md:min-h-[42svh]`}
         >
-          <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-2.5 py-0.5 text-[clamp(0.55rem,0.75vw,0.7rem)] font-semibold tracking-[0.12em]">
+          <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-2.5 py-0.5 text-[clamp(0.65rem,0.75vw,0.7rem)] font-semibold tracking-[0.12em]">
             .01
           </span>
-          <h2 className="m-0 font-serif text-[clamp(1.25rem,2.4vw,2.15rem)] font-medium leading-[1.05]">
+          <h2 className="m-0 font-serif text-[clamp(1.5rem,4.5vw,2.15rem)] font-medium leading-[1.05]">
             The &apos;Celeritas Levitas&apos;{' '}
             <em className="italic font-medium">Philosophy</em>
           </h2>
-          <p className="m-0 text-[clamp(0.5rem,0.75vw,0.65rem)] font-semibold uppercase leading-[1.55] tracking-[0.12em] opacity-90">
+          <p className="m-0 text-[0.7rem] md:text-[clamp(0.5rem,0.75vw,0.65rem)] font-semibold uppercase leading-[1.55] tracking-[0.12em] opacity-90">
             Our motto, meaning &apos;speed in lightness,&apos; is at the core of
             everything we do. Instead of chasing excessive power, we focus on
             reducing weight. This makes our…
           </p>
         </div>
 
-        <div className={blockBg} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
 
         {/* Row 2 col 3 — BORN IS marquee */}
-        <div className={`${blockBg} relative`}>
-          <span className="born-marquee absolute top-1/2 whitespace-nowrap font-display text-[clamp(3.5rem,12vw,9rem)] uppercase leading-none tracking-tight text-white">
+        <div className={`${blockBg} relative max-md:col-span-2 max-md:min-h-[28svh]`}>
+          <span className="born-marquee absolute top-1/2 whitespace-nowrap font-display text-[clamp(2.75rem,14vw,9rem)] md:text-[clamp(3.5rem,12vw,9rem)] uppercase leading-none tracking-tight text-white">
             BORN IS
           </span>
         </div>
 
-        <div className={blockBg} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
 
         {/* Row 3 */}
-        <div className={blockBg} aria-hidden="true" />
-        <div className={blockBg} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
 
         {/* Row 3 col 3 — image */}
-        <div className={`${blockBg} relative`}>
+        <div className={`${blockBg} relative max-md:col-span-2 max-md:min-h-[42svh]`}>
           <img
             src={speciesBg}
             alt=""
@@ -65,7 +66,7 @@ export default function Species() {
           />
         </div>
 
-        <div className={blockBg} aria-hidden="true" />
+        <div className={spacer} aria-hidden="true" />
       </div>
     </section>
   )

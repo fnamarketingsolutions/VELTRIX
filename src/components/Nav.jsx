@@ -103,7 +103,7 @@ export default function Nav() {
             />
           </button>
           <span className="font-display text-[1.15rem] tracking-[0.12em] text-center">
-            PORSCHE
+            VELTRIX
           </span>
           <button
             type="button"
