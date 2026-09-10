@@ -5,6 +5,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let lenisInstance = null
+
+export function getLenis() {
+  return lenisInstance
+}
+
 /**
  * Initializes Lenis smooth scroll and syncs it with GSAP ScrollTrigger.
  * Returns a ref to the Lenis instance for velocity-driven effects.
@@ -20,6 +26,7 @@ export function useLenis() {
     })
 
     lenisRef.current = lenis
+    lenisInstance = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -34,6 +41,7 @@ export function useLenis() {
       gsap.ticker.remove(tickerCallback)
       lenis.destroy()
       lenisRef.current = null
+      if (lenisInstance === lenis) lenisInstance = null
     }
   }, [])
 
